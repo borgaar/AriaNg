@@ -1,0 +1,31 @@
+name: Deploy on homeserver
+
+on:
+  push:
+    branches: ['master']
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install SSH keys
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H ${{ secrets.SSH_URL }} >> ~/.ssh/known_hosts
+
+      - name: Connect and deploy
+        run: |
+          ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SSH_URL }} << 'EOF'
+            cd ${{ secrets.SSH_WORK_DIR }}
+            echo $(pwd)
+            git pull
+            make build
+            make release
+          EOF
