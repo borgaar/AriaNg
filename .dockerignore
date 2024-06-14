@@ -1,0 +1,10 @@
+.bash_history
+.bash_logout
+.bashrc
+.cache/
+.lesshst
+.local/
+.profile
+.ssh/
+aria2c.conf
+aria2c.session
