@@ -142,3 +142,4 @@ Temporary Items
 .ssh/
 aria2c.conf
 aria2c.session
+.well-known/
