@@ -6,4 +6,4 @@ release:
 	docker-compose -f ariang/docker-compose.yml down || true
 	docker image rm -f $(docker image ls -q) || true
 	docker system prune -f
-	docker-compose -f docker-compose.yml up -d --build
+	docker-compose -f ariang/docker-compose.yml up -d --build
