@@ -1,7 +1,8 @@
 build:
-	docker build -t borgaaar/downloader:1.0 .
+	npm install
+	npm run dev
 
 release:
-	docker rm -f downloader | true
-	docker run -d --name downloader -p 9000:9000 borgaaar/downloader:1.0
-	docker ps
+	docker rm -f downloader || true
+	docker system prune -f
+	docker-compose -f docker-compose.yml up -d

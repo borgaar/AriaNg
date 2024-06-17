@@ -1,0 +1,9 @@
+services:
+    app:
+        container_name: downloader
+        ports:
+            - "9000:9000"
+        build:
+            context: .
+            dockerfile: Dockerfile
+        restart: always

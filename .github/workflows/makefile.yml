@@ -26,6 +26,5 @@ jobs:
             cd ${{ secrets.SSH_WORK_DIR }}
             echo $(pwd)
             git pull
-            make build
             make release
           EOF
