@@ -1,6 +1,6 @@
 FROM node:latest
 
-RUN apt-get install gulp
+RUN npm install -g gulp-cli
 
 WORKDIR /app
 
