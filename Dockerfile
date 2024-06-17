@@ -1,5 +1,7 @@
 FROM node:latest
 
+RUN apt-get install gulp
+
 WORKDIR /app
 
 COPY package*.json ./
