@@ -1,6 +1,6 @@
 build:
-	npm install
-	npm run dev
+	pnpm install
+	pnpm run dev
 
 release:
 	docker-compose -f ariang/docker-compose.yml down || true
